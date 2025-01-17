@@ -14,6 +14,13 @@ document.getElementById("scanForm").addEventListener("submit", async (e) => {
 		// timeout: parseInt(timeout, 10),
 	};
 
+	const dynamicFields = document.getElementById("dynamicField");
+	if (dynamicFields) {
+		// Here I want to retrieve the dynamic option fields for request
+		// But I guess it would be fine to make it like a switch based on the primary scan type or something
+		// Or just hardcode everything inside the sent struct for now but do an || (as in 'or') to either get a real value or give null
+	}
+
 	const resp = await fetch("/start", {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },

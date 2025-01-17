@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"text/template"
 
-	"github.com/KennyZ69/goapt-web/api"
+	"github.com/KennyZ69/goapt-web.git/api"
 )
 
 func main() {

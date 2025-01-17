@@ -19,7 +19,12 @@ func scan(req ScanReq) ScanResult {
 
 	switch req.Type {
 	case "network":
-
+		switch req.Test {
+		case "port-scan":
+		case "ping-scan":
+		case "mapper":
+		case "general-scan":
+		}
 	}
 	// Here I need to decide on what scan to run based on the request sent
 	// and make response as json for it

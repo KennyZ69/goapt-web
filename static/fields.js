@@ -1,15 +1,15 @@
 /**
+ * @typedef {Object} FieldTemplate -- an object as an dom element with given properties
  * @property {string} label
  * @property {string} type
  * @property {string} name
  * @property {string} placeholder
  * @property {boolean} required
- * @typedef {Object} FieldTemplate
  *
  * @typedef {Object} ScanOptions
- * @property {Record<string, []FieldTemplate>} specific -- field templates for specific scans under a given scan type
+ * @property {Record<string, []FieldTemplate>} specificScans -- field templates for specific scans under a given scan type
  *
- * @type {Record<string, ScanOptions>}
+ * @type {Record<string, ScanOptions>} -- a mapped list of templates for given specific scan
  */
 
 
@@ -20,13 +20,13 @@ const fieldTemplates = {
 				{ label: "Ports to scan (comma separated):", type: "text", name: "ports", placeholder: "e.g. 22,423,699", required: true }
 			],
 			"general-scan": [
-				{ label: "General scan to map the network and provide information", type: "text", name: "generalScan", placeholder: "e.g. 22,423,699", required: false }
 			],
 			"mapper": [
-				{ label: "Port to scan (comma separated):", type: "text", name: "ports", placeholder: "e.g. 22,423,699", required: false }
+				{ label: "Source IP from which to map the network: ", type: "text", name: "sourceIP", placeholder: "e.g. 172.117.0.15", required: true },
+				{ label: "Network interface: ", type: "text", name: "netifi", placeholder: "eth0", required: true }
 			],
 			"ping-scan": [
-				{ label: "Port to scan (comma separated):", type: "text", name: "ports", placeholder: "e.g. 22,423,699", required: false }
+				{ label: "Target IP range: ", type: "text", name: "targetIPs", placeholder: "e.g. 192.169.0/24", required: true }
 			],
 
 		}
