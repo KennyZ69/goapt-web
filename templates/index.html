@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Network Scanner Interface</title>
+	<link rel="stylesheet" href="static/style.css">
+
+</head>
+
+<body>
+	<div class="container">
+		<h1>Network Scanner</h1>
+		<form id="scanForm">
+			<!-- Scan Type Select -->
+			<label for="scanType">Select Scan Type:</label>
+			<select id="scanType" name="scanType" required>
+				<option value="" disabled selected>Select a scan type</option>
+				<option value="network">Network</option>
+				<option value="script">Run a script</option>
+			</select>
+
+			<!-- Specific Scan Select -->
+			<label for="scanTest">Select Specific Scan: </label>
+			<select id="scanTest" name="scanTest" required>
+				<option value="" disabled selected>Select an option</option>
+			</select>
+
+			<div id="dynamicField"></div>
+
+			<!-- Submit Button -->
+			<button type="submit">Start Scan</button>
+		</form>
+		<div id="results"></div>
+	</div>
+</body>
+
+<script src="static/client.js?v=1" defer></script>
+<script src="static/fields.js?v=1" defer></script>
+
+</html>

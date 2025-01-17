@@ -1,18 +1,11 @@
-package main
+package api
 
 import (
 	"encoding/json"
 	"net/http"
-	"time"
 )
 
-type ScanReq struct {
-	Type    string        `json:"scanType"`
-	Test    string        `json:"scanTest"`
-	Timeout time.Duration `json:"timeout"`
-}
-
-func startScanHandle(w http.ResponseWriter, r *http.Request) {
+func StartScanHandle(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
@@ -25,9 +18,9 @@ func startScanHandle(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// somehow implement in here the scan logic and also resulting it on the web
-}
+	resp := scan(req)
 
-func main() {
-	http.HandleFunc("/start", startScanHandle)
-	http.ListenAndServe(":1769", nil)
+	w.Header().Set("Content-Type", "application/json")
+	// TODO: I need to get the result of given scan as json response and provide that to my frontend
+	json.NewEncoder(w).Encode(resp)
 }
