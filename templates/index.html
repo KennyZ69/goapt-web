@@ -7,6 +7,9 @@
 	<title>Network Scanner Interface</title>
 	<link rel="stylesheet" href="static/style.css">
 
+	<script src="static/client.js?v=1" defer></script>
+	<script src="static/fields.js?v=1" defer></script>
+
 </head>
 
 <body>
@@ -32,11 +35,11 @@
 			<!-- Submit Button -->
 			<button type="submit">Start Scan</button>
 		</form>
-		<div id="results"></div>
+		<div id="results">
+			<h2>Results: </h2>
+			<pre id="resultsContent"></pre>
+		</div>
 	</div>
 </body>
-
-<script src="static/client.js?v=1" defer></script>
-<script src="static/fields.js?v=1" defer></script>
 
 </html>

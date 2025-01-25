@@ -17,16 +17,25 @@ const fieldTemplates = {
 	network: {
 		specificScans: {
 			"port-scan": [
-				{ label: "Ports to scan (comma separated):", type: "text", name: "ports", placeholder: "e.g. 22,423,699", required: true }
+				{ label: "Ports to scan (comma separated):", type: "text", name: "ports", placeholder: "e.g. 22,423,699", required: true },
+				{ label: "Target IP range: ", type: "text", name: "targetIPs", placeholder: "e.g. 192.169.0/24", required: true },
+				{ label: "Network interface: ", type: "text", name: "netifi", placeholder: "eth0", required: true },
+
 			],
 			"general-scan": [
+				{ label: "Target IP range: ", type: "text", name: "targetIPs", placeholder: "e.g. 192.169.0/24", required: true },
+				{ label: "Network interface: ", type: "text", name: "netifi", placeholder: "eth0", required: true },
+
 			],
 			"mapper": [
 				{ label: "Source IP from which to map the network: ", type: "text", name: "sourceIP", placeholder: "e.g. 172.117.0.15", required: true },
-				{ label: "Network interface: ", type: "text", name: "netifi", placeholder: "eth0", required: true }
+				{ label: "Network interface: ", type: "text", name: "netifi", placeholder: "eth0", required: true },
+				{ label: "Target IP range: ", type: "text", name: "targetIPs", placeholder: "e.g. 192.169.0/24", required: true }
+
 			],
 			"ping-scan": [
-				{ label: "Target IP range: ", type: "text", name: "targetIPs", placeholder: "e.g. 192.169.0/24", required: true }
+				{ label: "Target IP range: ", type: "text", name: "targetIPs", placeholder: "e.g. 192.169.0/24", required: true },
+				{ label: "Network interface: ", type: "text", name: "netifi", placeholder: "eth0", required: true },
 			],
 
 		}
@@ -76,6 +85,7 @@ function renderDynamicFields(primaryScanType, specificScan) {
 		const input = document.createElement("input");
 		input.type = field.type;
 		input.name = field.name;
+		input.id = field.name;
 		input.placeholder = field.placeholder;
 		if (field.required) input.required = true;
 

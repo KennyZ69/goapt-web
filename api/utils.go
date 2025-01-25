@@ -18,3 +18,7 @@ type NetOp struct {
 	TargetIPs []net.IP      `json:"targetIPs"`
 	Ports     []int         `json:"ports"`
 }
+
+func parseIPs() []net.IP {
+
+}

@@ -33,18 +33,19 @@ func PingScan(IParr []net.IP, timeout time.Duration) (*ScanResult, error) {
 	}, nil
 }
 func discoverHosts(IParr []net.IP, activeHosts chan string, timeout time.Duration, wg *sync.WaitGroup) (string, error) {
-	var notActive, failed int             // counters
+	var active, notActive, failed int     // counters
 	p := []byte("Running ping scan ... ") // payload for pings
 
 	for _, ip := range IParr {
 		wg.Add(1)
 		go func(targetIP net.IP) {
 			defer wg.Done()
-			_, active, err := netlibk.HigherLvlPing(targetIP, p, timeout)
+			_, a, err := netlibk.HigherLvlPing(targetIP, p, timeout)
 			if err != nil {
 				failed++
 			}
-			if active {
+			if a {
+				active++
 				activeHosts <- targetIP.String()
 			} else {
 				notActive++
@@ -62,5 +63,5 @@ func discoverHosts(IParr []net.IP, activeHosts chan string, timeout time.Duratio
 		return msg, fmt.Errorf(msg)
 	}
 
-	return fmt.Sprintf("Ping scan results:\n	Active: %d\n	Failed: %d\n	Inactive: %d\n"), nil
+	return fmt.Sprintf("Ping scan results:\n	Active: %d\n	Failed: %d\n	Inactive: %d\n", active, failed, notActive), nil
 }
